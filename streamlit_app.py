@@ -43,8 +43,9 @@ def app():
         text = 'camera for free'
         st.write(text + ' ---> ' + predict_category(clfNB, text))
         strinput = st.text_input("Enter message:")
-        if st.button('Submit'):
-            st.write(strinput + ' ---> ' + predict_category(clfNB, strinput))
+        
+    if st.button('Submit'):
+        st.write(strinput + ' ---> ' + predict_category(clfNB, strinput))
 
 def predict_category(clf, s):
     pred = clf.predict([s])
