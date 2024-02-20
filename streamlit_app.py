@@ -40,7 +40,7 @@ def app():
         st.write(text + ' ---> ' + predict_category(clfNB, text))
         text = 'We will have a meeting'
         st.write(text + ' ---> ' + predict_category(clfNB, text))
-        text = 'camera for free')
+        text = 'camera for free'
         st.write(text + ' ---> ' + predict_category(clfNB, text))
 
 def predict_category(clf, s):
