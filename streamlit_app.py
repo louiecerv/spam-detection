@@ -35,13 +35,13 @@ def app():
         print(cmNB)
 
 
-        st.write(predict_category('receive a free entry'))
-        st.write(predict_category('you could win a prize'))
-        st.write(predict_category('We will have a meeting'))
-        st.write(predict_category('camera for free'))
+        st.write(predict_category(clfNB, 'receive a free entry'))
+        st.write(predict_category(clfNB, 'you could win a prize'))
+        st.write(predict_category(clfNB, 'We will have a meeting'))
+        st.write(predict_category(clfNB, 'camera for free'))
 
-def predict_category(s):
-    pred = clfNB.predict([s])
+def predict_category(clf, s):
+    pred = clf.predict([s])
     return pred
 
 if __name__ == "__main__":
