@@ -42,7 +42,7 @@ def app():
 
 def predict_category(clf, s):
     pred = clf.predict([s])
-    return pred
+    return str(pred[0])
 
 if __name__ == "__main__":
     app()
