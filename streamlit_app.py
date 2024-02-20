@@ -1,92 +1,46 @@
-#Input the relevant libraries
-import streamlit as st
-import pandas as pd
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
-from io import BytesIO
+import seaborn as sns; sns.set()
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import make_pipeline
+from sklearn.metrics import confusion_matrix
 
 # Define the Streamlit app
 def app():
     # Display the DataFrame with formatting
-    st.title("Generate Dataset with Features and Classes")
+    st.title("Spam Detection using the Naive Bayes Classifier")
     st.write(
-        """This app generates  dataset with balanced classes 
-        and informative features to facilitate exploration and analysis."""
+        """Replace with description of the dataset."""
         )
-    displaysummary = False
-    enabledownload = False
-    # Add interactivity and customization options based on user feedback
-    st.sidebar.header("Customization")
-    if st.sidebar.checkbox("Include data summary?"):
-        displaysummary = True
-    else:
-        displaysummary = False
-    if st.sidebar.checkbox("Enable download?"):
-        enabledownload = True
-    else:
-        enabledownload = False
     if st.button('Start'):
-        # Data generation with balanced classes and informative features
-        np.random.seed(42)  # For reproducibility
-        num_samples = 100
-        feature1 = np.random.normal(3, 2, size=num_samples)
-        feature2 = np.random.normal(4, 3, size=num_samples)
+        data = pd.read_csv('spam.csv', 
+                           dtype='str', header=0, 
+                           sep = ",", encoding='latin')        
+        X = data['v2']
+        y = data['v1']        
+        
+        clfNB = make_pipeline(TfidfVectorizer(), MultinomialNB())
 
-        # Create informative classes based on features
-        threshold = 8
-        classes = (feature1 + 2 * feature2) > threshold
-        labels = ['Class A' if label else 'Class B' for label in classes]
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=5)
+        clfNB.fit(X_train, y_train)
+        X_test_pred = clfNB.predict(X_test)
+        accuracy = 100.0 * (y_test == X_test_pred).sum() / X_test.shape[0]
+        print("Accuracy of the NB classifier =", round(accuracy, 2), "%")
+        cmNB = confusion_matrix(y_test, X_test_pred)
+        print(cmNB)
 
-        # Combine features and labels into a DataFrame
-        data = pd.DataFrame({
-            'Feature 1': feature1,
-            'Feature 2': feature2,
-            'Class': labels,
-        })
 
-        st.dataframe(data.style.set_properties(
-            caption="Dataset Preview",
-            align="center",
-            index_label="#",
-        ))
+        st.write(predict_category('receive a free entry'))
+        st.write(predict_category('you could win a prize'))
+        st.write(predict_category('We will have a meeting'))
+        st.write(predict_category('camera for free'))
 
-        df = pd.DataFrame(data)
+def predict_category(s):
+    pred = clfNB.predict([s])
+    return pred
 
-        fig, ax = plt.subplots()
-        # Create the horizontal barplot
-        sns.countplot(y='Class', data=df, hue='Class', palette='bright', ax=ax)
-
-        # Add the title
-        ax.set_title('Plot of Target Class Distribution')
-        # Display the plot using Streamlit
-        st.pyplot(fig)
-
-        if displaysummary:
-            # Display other informative elements
-            st.header("Data Information")
-            st.write(df.describe())  # Include data summary
-        if enabledownload:
-            # Add download button with enhanced error handling and feedback
-            csv_file = BytesIO()
-            data.to_csv(csv_file, index=False)
-            csv_file.seek(0)
-
-            download_button = st.download_button(
-                label="Download CSV",
-                data=csv_file,
-                file_name="dataset.csv",
-                mime="text/csv",
-                on_click=None,  # Disable immediate download on page load
-            )
-
-            if download_button:
-                try:
-                    st.success("Download successful!")
-                except Exception as e:
-                    st.error(f"Download failed: {e}")
-                st.write("You can now explore and analyze this dataset for various purposes.")
-    
-#run the app
 if __name__ == "__main__":
     app()
