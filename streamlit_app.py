@@ -17,22 +17,26 @@ def app():
     st.write(
         """Replace with description of the dataset."""
         )
+    
+    data = pd.read_csv('spam.csv', 
+                        dtype='str', header=0, 
+                        sep = ",", encoding='latin')        
+    X = data['v2']
+    y = data['v1']        
+    
+    clfNB = make_pipeline(TfidfVectorizer(), MultinomialNB())
+    
     if st.button('Start'):
-        data = pd.read_csv('spam.csv', 
-                           dtype='str', header=0, 
-                           sep = ",", encoding='latin')        
-        X = data['v2']
-        y = data['v1']        
-        
-        clfNB = make_pipeline(TfidfVectorizer(), MultinomialNB())
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=5)
         clfNB.fit(X_train, y_train)
         X_test_pred = clfNB.predict(X_test)
+
         accuracy = 100.0 * (y_test == X_test_pred).sum() / X_test.shape[0]
-        print("Accuracy of the NB classifier =", round(accuracy, 2), "%")
+        st.write("Accuracy of the NB classifier =", round(accuracy, 2), "%")
+
         cmNB = confusion_matrix(y_test, X_test_pred)
-        print(cmNB)
+        st.write(cmNB)
 
         text = 'receive a free entry'
         st.write(text + ' ---> ' + predict_category(clfNB, text))
@@ -42,7 +46,7 @@ def app():
         st.write(text + ' ---> ' + predict_category(clfNB, text))
         text = 'camera for free'
         st.write(text + ' ---> ' + predict_category(clfNB, text))
-        
+
     strinput = st.text_input("Enter message:")
     if st.button('Submit'):
         st.write(strinput + ' ---> ' + predict_category(clfNB, strinput))
