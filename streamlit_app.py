@@ -34,8 +34,8 @@ def app():
         cmNB = confusion_matrix(y_test, X_test_pred)
         print(cmNB)
 
-        text = 'receive a free entry')
-        st.write(text + ' ' + predict_category(clfNB, text)
+        text = 'receive a free entry'
+        st.write(text + ' ' + predict_category(clfNB, text))
         st.write(predict_category(clfNB, 'you could win a prize'))
         st.write(predict_category(clfNB, 'We will have a meeting'))
         st.write(predict_category(clfNB, 'camera for free'))
