@@ -55,6 +55,16 @@ def app():
     X = data['v2']
     y = data['v1']        
     
+    # Create a new figure and axes object
+    fig, ax = plt.subplots()
+
+    # Create a horizontal barplot using seaborn
+    sns.countplot(y='v1', data=df, hue='v1', palette='bright', ax=ax)
+
+    # Set title
+    ax.set_title('Plot of Spam/Ham Distribution')
+    st.pyplot(fig)
+
     clfNB = make_pipeline(TfidfVectorizer(), MultinomialNB())
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=5)
     clfNB.fit(X_train, y_train)
