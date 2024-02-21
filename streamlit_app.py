@@ -18,7 +18,7 @@ def app():
     text = """Louie F. Cervantes, M.Eng. \n\n
     CCS 229 - Intelligent Systems
     Computer Science Department
-    College of Information and Communications Technlogy
+    College of Information and Communications Technology
     West Visayas State University"""
     st.text(text)
 
