@@ -15,14 +15,14 @@ from sklearn.metrics import classification_report
 def app():
     # Display the DataFrame with formatting
     st.title("Spam Detection using the Naive Bayes Classifier")
-    text = """Louie F. Cervantes, M.Eng.
-        CCS 229 - Intelligent Systems
+    text = """\nLouie F. Cervantes, M.Eng.
+        \n\nCCS 229 - Intelligent Systems
         Computer Science Department
         College of Information and Communications Technlogy
         West Visayas State University"""
     st.text(text)
 
-    st.subheader('Descrption')
+    st.subheader('Description')
 
     text = """The SMS Spam Collection Dataset from Kaggle, often used 
         to demonstrate Naive Bayes as a spam detector, is a valuable 
