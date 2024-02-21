@@ -25,7 +25,7 @@ def app():
         filtering. Here's a breakdown of its key characteristics:"""
     st.write(text)
     st.write('Data:')
-    st.write('Size: 5,574 SMS messages in English')
+    st.write('Size: 5,572 SMS messages in English')
     st.write("""Format: Plain text, with each line containing two columns: 
             label ("ham" for legitimate, "spam" for spam) and message content.
             Content: The messages originate from various sources, 
