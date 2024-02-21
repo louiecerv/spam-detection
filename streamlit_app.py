@@ -85,7 +85,7 @@ def app():
 
     strinput = st.text_input("Enter message:")
     if st.button('Submit'):
-        st.write(strinput + ' ---> ' + predict_category(clfNB, strinput))
+        st.write('The message is : ' + predict_category(clfNB, strinput))
 
 def predict_category(clf, s):
     pred = clf.predict([s])
