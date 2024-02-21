@@ -21,6 +21,9 @@ def app():
     data = pd.read_csv('spam.csv', 
                         dtype='str', header=0, 
                         sep = ",", encoding='latin')        
+    st.subheader('The Dataset')
+    # display the dataset
+    st.dataframe(data, use_container_width=True)  
     X = data['v2']
     y = data['v1']        
     
@@ -30,8 +33,6 @@ def app():
     
     X_test_pred = clfNB.predict(X_test)
     if st.button('Start'):
-
-
 
         accuracy = 100.0 * (y_test == X_test_pred).sum() / X_test.shape[0]
         st.write("Accuracy of the NB classifier =", round(accuracy, 2), "%")
