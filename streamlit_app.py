@@ -15,7 +15,7 @@ from sklearn.metrics import classification_report
 def app():
     # Display the DataFrame with formatting
     st.title("Spam Detection using the Naive Bayes Classifier")
-    text = """\nLouie F. Cervantes, M.Eng.
+    text = """Louie F. Cervantes, M.Eng. \n\n
     CCS 229 - Intelligent Systems
     Computer Science Department
     College of Information and Communications Technlogy
