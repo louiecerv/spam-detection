@@ -18,7 +18,26 @@ def app():
     st.write(
         """Replace with description of the dataset."""
         )
-    
+    text = """The SMS Spam Collection Dataset from Kaggle, often used 
+        to demonstrate Naive Bayes as a spam detector, is a valuable 
+        resource for machine learning enthusiasts and researchers 
+        interested in text classification, particularly spam 
+        filtering. Here's a breakdown of its key characteristics:"""
+    st.write(text)
+    st.write('Data:')
+    st.write('Size: 5,574 SMS messages in English')
+    st.write("""Format: Plain text, with each line containing two columns: 
+            label ("ham" for legitimate, "spam" for spam) and message content.
+            Content: The messages originate from various sources, 
+            including Singaporean students and general English speakers. 
+            They cover a diverse range of topics and communication styles.""")
+
+    st.write('Spam vs. Ham Distribution:')
+
+    st.write("""Balanced: The dataset contains roughly equal numbers of spam
+             (48%) and ham (52%) messages, providing a realistic representation 
+             of real-world spam distribution.""")
+
     data = pd.read_csv('spam.csv', 
                         dtype='str', header=0, 
                         sep = ",", encoding='latin')        
