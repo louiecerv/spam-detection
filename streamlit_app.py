@@ -31,13 +31,14 @@ def app():
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=5)
     clfNB.fit(X_train, y_train)
     
-    X_test_pred = clfNB.predict(X_test)
+    y_test_pred = clfNB.predict(X_test)
     if st.button('Start'):
+        
+        st.header('Performance Metrics')
+        st.text(classification_report(y_test, y_test_pred))
 
-        accuracy = 100.0 * (y_test == X_test_pred).sum() / X_test.shape[0]
-        st.write("Accuracy of the NB classifier =", round(accuracy, 2), "%")
-
-        cmNB = confusion_matrix(y_test, X_test_pred)
+        st.write('Confusion Matrix')
+        cmNB = confusion_matrix(y_test, y_test_pred)
         st.write(cmNB)
 
         text = 'receive a free entry'
