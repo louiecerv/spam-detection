@@ -23,6 +23,8 @@ def app():
                         sep = ",", encoding='latin')        
     st.subheader('The Dataset')
     # display the dataset
+    st.header('The Dataset')
+    
     st.dataframe(data, use_container_width=True)  
     X = data['v2']
     y = data['v1']        
