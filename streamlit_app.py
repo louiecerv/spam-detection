@@ -37,13 +37,14 @@ def app():
     y_test_pred = clfNB.predict(X_test)
     if st.button('Start'):
         
-        st.header('Performance Metrics')
+        st.subheader('Performance Metrics')
         st.text(classification_report(y_test, y_test_pred))
 
-        st.write('Confusion Matrix')
+        st.subheader('Confusion Matrix')
         cmNB = confusion_matrix(y_test, y_test_pred)
         st.write(cmNB)
 
+        st.subheader('Sample predictions')
         text = 'receive a free entry'
         st.write(text + ' ---> ' + predict_category(clfNB, text))
         text = 'you could win a prize'
