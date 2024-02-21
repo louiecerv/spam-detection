@@ -59,7 +59,7 @@ def app():
     fig, ax = plt.subplots()
 
     # Create a horizontal barplot using seaborn
-    sns.countplot(y='v1', data=df, hue='v1', palette='bright', ax=ax)
+    sns.countplot(y='v1', data=data, hue='v1', palette='bright', ax=ax)
 
     # Set title
     ax.set_title('Plot of Spam/Ham Distribution')
