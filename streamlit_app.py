@@ -17,9 +17,9 @@ def app():
     st.title("Spam Detection using the Naive Bayes Classifier")
     text = """\nLouie F. Cervantes, M.Eng.
         \n\nCCS 229 - Intelligent Systems
-        Computer Science Department
-        College of Information and Communications Technlogy
-        West Visayas State University"""
+    Computer Science Department
+    College of Information and Communications Technlogy
+    West Visayas State University"""
     st.text(text)
 
     st.subheader('Description')
