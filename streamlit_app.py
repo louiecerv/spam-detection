@@ -38,12 +38,10 @@ def app():
             including Singaporean students and general English speakers. 
             They cover a diverse range of topics and communication styles.""")
 
-    st.write('Spam vs. Ham Distribution:')
-
     data = pd.read_csv('spam.csv', 
                         dtype='str', header=0, 
                         sep = ",", encoding='latin')        
-    st.subheader('The Dataset')
+
     # display the dataset
     st.header('The Dataset')
     
