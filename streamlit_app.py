@@ -15,12 +15,12 @@ from sklearn.metrics import classification_report
 def app():
     # Display the DataFrame with formatting
     st.title("Spam Detection using the Naive Bayes Classifier")
-    st.write('Louie F. Cervantes, M.Eng.')
-    st.write('CCS 229 - Intelligent Systems')
-    st.write('Computer Science Department')
-    st.write('College of Information and Communications Technlogy')
-    st.write('West Visayas State University')
-
+    text = """Louie F. Cervantes, M.Eng. \n
+        CCS 229 - Intelligent Systems \n
+        Computer Science Department \n
+        College of Information and Communications Technlogy \n
+        West Visayas State University"""
+    st.text(text)
 
     st.subheader('Descrption')
 
