@@ -40,10 +40,6 @@ def app():
 
     st.write('Spam vs. Ham Distribution:')
 
-    st.write("""Balanced: The dataset contains roughly equal numbers of spam
-             (48%) and ham (52%) messages, providing a realistic representation 
-             of real-world spam distribution.""")
-
     data = pd.read_csv('spam.csv', 
                         dtype='str', header=0, 
                         sep = ",", encoding='latin')        
