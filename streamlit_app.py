@@ -75,13 +75,13 @@ def app():
 
         st.subheader('Sample predictions')
         text = 'receive a free entry'
-        st.write(text + ' ---> ' + predict_category(clfNB, text))
+        st.text(text + ' ---> ' + predict_category(clfNB, text))
         text = 'you could win a prize'
-        st.write(text + ' ---> ' + predict_category(clfNB, text))
+        st.text(text + ' ---> ' + predict_category(clfNB, text))
         text = 'We will have a meeting'
-        st.write(text + ' ---> ' + predict_category(clfNB, text))
+        st.text(text + ' ---> ' + predict_category(clfNB, text))
         text = 'camera for free'
-        st.write(text + ' ---> ' + predict_category(clfNB, text))
+        st.text(text + ' ---> ' + predict_category(clfNB, text))
 
     strinput = st.text_input("Enter message:")
     if st.button('Submit'):
