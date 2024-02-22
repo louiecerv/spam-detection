@@ -82,7 +82,9 @@ def app():
         st.text(text + ' ---> ' + predict_category(clfNB, text))
         text = 'camera for free'
         st.text(text + ' ---> ' + predict_category(clfNB, text))
-    st.write('Test the NB Classifier. Input a message and the classifier will output either HAM or SPAM based on its trained model.')
+    st.write("""Test the NB Classifier: 
+             Input a message and the classifier will output either HAM or SPAM based 
+             on its trained model.""")
     strinput = st.text_input("Enter a message:")
     if st.button('Submit'):
         st.write('The message is : ' + predict_category(clfNB, strinput))
