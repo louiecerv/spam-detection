@@ -64,6 +64,9 @@ def app():
     clfNB.fit(X_train, y_train)
     
     y_test_pred = clfNB.predict(X_test)
+
+    st.write('Click Start to start traing the NB Classifer and generate a performance report.')
+
     if st.button('Start'):
         
         st.subheader('Performance Metrics')
