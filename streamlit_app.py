@@ -65,7 +65,7 @@ def app():
     
     y_test_pred = clfNB.predict(X_test)
 
-    st.write('Click Start to start traing the NB Classifer and generate a performance report.')
+    st.write('Click Start to start training the NB Classifer and generate a performance report.')
 
     if st.button('Start'):
         
